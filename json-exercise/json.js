@@ -48,6 +48,21 @@ let removeZsl = function (name) {
     return newZslList.length === parsedJson.length
     
 }
+let getZsl = function (name) {
+    let parsedJson = fetchZslList();
+
+
+    //enumeration
+    let newZslList = parsedJson.filter((zsl) => zsl.name === name);
+
+    return newZslList[0];
+    
+}
+let listZsl = function () {
+    let parsedJson = fetchZslList();
+    return parsedJson;
+}
+
 
 // addZsl("Wonderwoman", 821011112222)
 // addZsl("Antman", 821011112222)
@@ -56,7 +71,9 @@ let removeZsl = function (name) {
 
 module.exports = {
     addZsl,
-    removeZsl
+    removeZsl,
+    getZsl,
+    listZsl
 }
 
 
