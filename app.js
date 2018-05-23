@@ -3,11 +3,41 @@
 const json = require('./json-exercise/json.js');
 const _ = require('lodash');
 const yargs = require('yargs');
+const argv = yargs
+    .command('add', 'Add a new zsl', {
+        name: {
+            describe: 'Name of a zsl to add.',
+            demand: true,
+            alias: 'n'
+        },
+        tel: {
+            describe: 'Telephone number of a zsl to add.',
+            demand: true,
+            alias: 't'
+        },
+    })
+    .command('list', 'List zsls')
+    .command('remove', 'Remove a zsl from list', {
+        name: {
+            describe: 'Name of a zsl to remove.',
+            demand: true,
+            alias: 'n'
+        }
+    })
+    .command('get', 'Read a zsl', {
+        name: {
+            describe: 'Name of a zsl to read.',
+            demand: true,
+            alias: 'n'
+        }
+    })
+    .help()
+    .argv;
+
 
 let arg2 = yargs.argv._[0];
 let arg3 = yargs.argv.name;
 let arg4 = yargs.argv.tel;
-
 
 
 // console.log(arg3, arg4);
