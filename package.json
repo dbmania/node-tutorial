@@ -11,6 +11,16 @@
   "dependencies": {
     "lodash": "^4.17.10",
     "npm": "^6.0.1",
+    "request": "^2.87.0",
     "yargs": "^11.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-hash/node-tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/open-hash/node-tutorial/issues"
+  },
+  "homepage": "https://github.com/open-hash/node-tutorial#readme"
 }
