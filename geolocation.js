@@ -20,39 +20,35 @@
 // Reverse geocoding = lat, lng => address
 
 const request = require('request');
-const yargs = require('yargs');
 
-const argv = yargs
-    .options({
-        // 수풀 Supul = Spaceweb = Openhash blockchain
-        supul: {
-            demand: true,
-            alias: 's',
-            describe: 'Get information about the area user requested.',
-            string: true
-        }
-    })
-    .help()
-    .argv;
+
     
     // 1. substitute the space aret to %20 in Korean characters.
     // 2. translate Korea to English, then encrypt it.
 
-let encodedAddress = encodeURIComponent(argv.supul);
 
-request({
-    url: `https://maogleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyB9O1f7y7Qzm3k5P6-4fNIMpeaQED827WI`,
-    json: true
-}, (error, response, body) => {
-    if (error) {
-        console.log('This site can’t be reached');
-    } else if (body.status === 'ZERO_RESULTS'){
-        console.log('There is no address matching your input.');
-    } else if (body.status === 'OK') {
-        console.log(body.results[0].formatted_address);
-        console.log(body.results[0].geometry.location.lat);
-        console.log(body.results[0].geometry.location.lng);
-    }
-});
+let geocode = (address, callback) => {
+    let encodedAddress = encodeURIComponent(address);
+    request({
+        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyB9O1f7y7Qzm3k5P6-4fNIMpeaQED827WI`,
+        json: true
+    }, (error, response, body) => {
+        if (error) {
+            callback('This site can’t be reached');
+        } else if (body.status === 'ZERO_RESULTS'){
+            callback('There is no address matching your input.');
+        } else if (body.status === 'OK') {
+            let geoResults = {};
+            geoResults.address = body.results[0].formatted_address;
+            geoResults.lat = body.results[0].geometry.location.lat;
+            geoResults.lng = body.results[0].geometry.location.lng;
+
+            callback(undefined, geoResults);
+        }
+    });
+}
+
+
+module.exports.geocode = geocode;
 
 

@@ -1,0 +1,16 @@
+CORE(Chatered Openhash and Robotics Educator) Exam Level 1
+
+Requirement: Sep, 2018
+
+Supposing there are 10 cars autonomously driving in Korea, and each car has a GPS device, 
+1. You should write an app which collects the current location(GPS, address).  
+2. Add a car to car-list, 
+3. Get the list of cars. 
+4. Remove a car from list. 
+5. Read a data on a specific car. 
+
+Autonomously driving cars => stand-alone(google, tesla, Benz, BMW) => Openhash(Harmonized Driving => total utility of a society)
+Supposing the traffic central server of Korea shall manage all the traffic in Korea. 
+The server should know the weather of each region, for example Korea. 
+
+
